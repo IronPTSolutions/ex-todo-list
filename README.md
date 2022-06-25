@@ -2,7 +2,7 @@ Task CRD express app (Create, Read, Delete)
 
 - check and understand `app.js`. Explain what each line is for. Don't need to add code here
 - check and understand `routes.config.js`. Explain what each line is for. some TODOs to resolve later!
-- check and understand `routes.controller.js`. Explain what each line is for. some TODOs to resolve later!
+- check and understand `tasks.controller.js`. Explain what each line is for. some TODOs to resolve later!
 - check and understand `views/tasks/` files. Explain what each file is for. some TODOs to resolve!
 
 ### 0 - Create a beautiful layout using bootstrap!
