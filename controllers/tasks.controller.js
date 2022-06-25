@@ -1,6 +1,10 @@
 const Task = require("../services/tasks.service");
 
 module.exports.list = (req, res, next) => {
+  Task.find()
+    .then(task => {
+      res.render('tasks/list', { task })
+    })
   // TODO: use Task.find() to get all tasks and render tasks list
   // Task.find() returns a promise that resolves with task list
   res.send("TODO");
