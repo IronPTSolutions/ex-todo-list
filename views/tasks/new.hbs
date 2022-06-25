@@ -1,3 +1,12 @@
 <!-- TODO: render a form to create a new task with a title field -->
 <!-- remember form action and method attributes ;) -->
-New
+<form action="/tasks" method="post">
+
+<li>
+ <label for="task">Task</label>
+ <input type="text" name="title">
+</li>
+<li>
+    <button type="submit">Submit</button>
+</li>
+</form>

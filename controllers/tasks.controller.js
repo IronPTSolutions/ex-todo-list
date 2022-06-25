@@ -20,8 +20,12 @@ module.exports.detail = (req, res, next) => {
 module.exports.create = (req, res, next) => {
   // TODO: use Task.create({...}) to create a new Task and redirect to list
   // Task.create() returns a promise that resolves with created task detail
-  Task.create({ tasks })
+  const data = { title: req.body.title }
 
+  Task.create(data)
+    .then(task => {
+      res.redirect('/tasks')
+    })
 };
 
 module.exports.delete = (req, res, next) => {
