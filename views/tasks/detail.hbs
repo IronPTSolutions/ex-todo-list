@@ -1,1 +1,10 @@
 <!-- TODO: render a beautiful task detail -->
+<h1>My tasks</h1>
+
+<p>{{task.title}}</p>
+
+<form action="/tasks/{{task.id}}/delete" method="post">
+  <button type="submit">Delete Task</button>
+</form>
+
+<a href="/tasks">Go to list</a>
