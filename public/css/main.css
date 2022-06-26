@@ -1,0 +1,33 @@
+.btn {
+    margin: 2%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.form {
+    margin-top: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+.form button {
+    width: 200px;
+}
+
+.detail-buttons {
+    display: flex;
+}
+/* .detail-buttons form{
+   width: 200px;
+}
+.detail-buttons a{
+    width: 200px;
+} */
+
+/* .first-screen a {
+    margin-top: 20%;
+} */
