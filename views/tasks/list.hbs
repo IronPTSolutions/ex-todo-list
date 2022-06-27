@@ -1,0 +1,11 @@
+<ul>
+    {{#each tasks as |task|}}
+        <li>
+            <a href="/tasks/{{task.id}}">
+                {{task.title}}
+            </a>
+        </li>
+    {{/each}}
+</ul>
+
+<a href="/tasks/new">New Task</a>

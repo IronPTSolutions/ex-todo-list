@@ -1,25 +1,31 @@
 const Task = require("../services/tasks.service");
 
 module.exports.list = (req, res, next) => {
-  // TODO: use Task.find() to get all tasks and render tasks list
-  // Task.find() returns a promise that resolves with task list
-  res.send("TODO");
+  Task.find().then((tasks) => {
+    res.render("tasks/list", { tasks });
+  });
 };
 
 module.exports.detail = (req, res, next) => {
-  // TODO: use Task.findById(id) to get task by id and render task detail
-  // Task.findById() returns a promise that resolves with task detail (or undefined if it does not exist)
-  res.send("TODO");
+  Task.findById(req.params.id).then((task) => {
+    res.render("tasks/detail", { task });
+  });
+};
+
+module.exports.new = (req, res, next) => {
+  res.render("tasks/new");
 };
 
 module.exports.create = (req, res, next) => {
-  // TODO: use Task.create({...}) to create a new Task and redirect to list
-  // Task.create() returns a promise that resolves with created task detail
-  res.send("TODO");
+  const data = req.body;
+
+  Task.create(data).then((task) => {
+    res.redirect("/tasks");
+  });
 };
 
 module.exports.delete = (req, res, next) => {
-  // TODO: use Task.findByIdAndDelete(id) to delete a task and redirect to list
-  // Task.findByIdAndDelete() returns a promise that resolves with undefined
-  res.send("TODO");
+  Task.findByIdAndDelete(req.params.id).then(() => {
+    res.redirect("/tasks");
+  });
 };
