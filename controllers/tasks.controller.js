@@ -1,7 +1,7 @@
-const Task = require("../services/tasks.service");
+const Task = require("../models/task.model");
 
 module.exports.list = (req, res, next) => {
-  Task.find().then((tasks) => {
+  Task.find(req.query).then((tasks) => {
     res.render("tasks/list", { tasks });
   });
 };

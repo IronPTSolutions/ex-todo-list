@@ -10,6 +10,9 @@ app.use(logger("dev"));
 app.use(express.static(`${__dirname}/public`));
 app.use(express.urlencoded({ extended: false }));
 
+require("./config/db.config");
+require("./config/hbs.config");
+
 const routes = require("./config/routes.config");
 app.use("/", routes);
 

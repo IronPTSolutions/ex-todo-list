@@ -1,4 +1,23 @@
-<form action="/tasks" method="post">
-    <input name="title" placeholder="task title"/>
-    <button type="submit">Create Task</button>
+<form action="/tasks" method="POST">
+  <div class="mb-3">
+    <label for="title" class="form-label">Title</label>
+    <input type="text" class="form-control" id="title" name="title">
+  </div>
+
+  <div class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" name="description"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label for="author" class="form-label">author</label>
+    <input type="text" class="form-control" id="author" name="author">
+  </div>
+
+  <div class="mb-3">
+    <label for="image" class="form-label">image</label>
+    <input type="text" class="form-control" id="image" name="image">
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
 </form>

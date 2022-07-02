@@ -1,11 +1,22 @@
-<ul>
-    {{#each tasks as |task|}}
-        <li>
-            <a href="/tasks/{{task.id}}">
-                {{task.title}}
-            </a>
-        </li>
-    {{/each}}
-</ul>
+<a href="/tasks/new" class="btn btn-secondary">New Task</a>
+<hr/>
 
-<a href="/tasks/new">New Task</a>
+<form>
+    <input type="text" class="form-control" name="author" placeholder="Search..."/>
+</form>
+
+<div class="row">
+    {{#each tasks as |task|}}
+        <div class="col-3">
+            <div class="card mb-4">
+                <img src="{{task.image}}" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{task.title}}</h5>
+                    <p class="card-text">{{task.description}}</p>
+                    <p class="card-text">@{{task.author}}</p>
+                    <a href="tasks/{{task.id}}" class="btn btn-primary">See detail</a>
+                </div>
+            </div>
+        </div>
+    {{/each}}
+</div>
