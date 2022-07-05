@@ -1,10 +1,7 @@
+const Task = require('../models/task.model');
 const mongoose = require("mongoose");
 
 mongoose
   .connect("mongodb://localhost/todolist")
-  .then(() => {
-    console.log("connected DB");
-  })
-  .catch((err) => {
-    console.log("error DB");
-  });
+  .then(() => console.info("connected DB"))
+  .catch((error) => console.error("error DB", error));
