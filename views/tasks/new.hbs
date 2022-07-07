@@ -1,22 +1,22 @@
 <form action="/tasks" method="POST">
-  <div class="mb-3">
-    <label for="title" class="form-label">Title</label>
-    <input type="text" class="form-control" id="title" name="title">
+
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fa fa-tag fa-fw"></i></span>
+    <input type="text" name="title" value="{{ task.title }}" class="form-control {{#if errors.title }}is-invalid{{/if}}" placeholder="Enter task title..." />
+    {{#if errors.title }}<div class="invalid-feedback">{{ errors.title }}</div>{{/if}}
   </div>
 
-  <div class="mb-3">
-    <label for="description" class="form-label">Description</label>
-    <textarea class="form-control" id="description" name="description"></textarea>
+  <div class="input-group">
+    <span class="input-group-text"><i class="fa fa-edit fa-fw"></i></span>
+    <textarea class="form-control {{#if errors.description }}is-invalid{{/if}}" name="description" aria-label="Task description">{{ task.description}}</textarea>
+    {{#if errors.description }}<div class="invalid-feedback">{{ errors.description }}</div>{{/if}}
   </div>
 
-  <div class="mb-3">
-    <label for="author" class="form-label">author</label>
-    <input type="text" class="form-control" id="author" name="author">
-  </div>
-
-  <div class="mb-3">
-    <label for="image" class="form-label">image</label>
-    <input type="text" class="form-control" id="image" name="image">
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fa fa-picture fa-fw"></i></span>
+    <input type="text" name="image" value="{{ task.image }}" class="form-control {{#if errors.image }}is-invalid{{/if}}"
+      placeholder="Enter task image url..." />
+    {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

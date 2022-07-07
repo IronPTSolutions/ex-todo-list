@@ -18,13 +18,14 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
-  const data = req.body;
+  const task = req.body;
 
-  Task.create(data)
+  Task.create(task)
     .then((task) => res.redirect("/tasks"))
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.render("tasks/new");
+        console.error(error);
+        res.render("tasks/new", { errors: error.errors, task });
       } else {
         next(error);
       }
