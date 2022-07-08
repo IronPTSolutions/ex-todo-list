@@ -10,7 +10,6 @@ const taskSchema = new Schema(
     },
     description: {
       type: String,
-      required: false,
       minLength: [10, 'Description needs at least 3 chars']
     },
     image: {
@@ -30,6 +29,13 @@ const taskSchema = new Schema(
     }
   }
 )
+
+taskSchema.pre('validate', function (next) {
+  this.image = this.image || undefined;
+  this.description = this.description || undefined;
+  next();
+});
+
 
 const Task = mongoose.model("Task", taskSchema);
 
