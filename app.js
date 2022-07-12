@@ -17,6 +17,12 @@ app.use(loadUser);
 require("./config/db.config");
 require("./config/hbs.config");
 
+app.use((req, res, next) => {
+  const path = req.path;
+  res.locals.title = path;
+  next();
+});
+
 const routes = require("./config/routes.config");
 app.use("/", routes);
 

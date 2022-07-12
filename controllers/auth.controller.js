@@ -8,7 +8,7 @@ module.exports.register = (req, res, next) => {
 module.exports.doRegister = (req, res, next) => {
 
   function renderWithErrors(errors) {
-    res.render('auth/register', {
+    res.status(400).render('auth/register', {
       user: req.body,
       errors
     });
@@ -40,7 +40,7 @@ module.exports.login = (req, res, next) => {
 module.exports.doLogin = (req, res, next) => {
 
   function renderInvalidLogin() {
-    res.render('auth/login', {
+    res.status(400).render('auth/login', {
       user: req.body,
       errors: { password: 'Invalid email or password' }
     });

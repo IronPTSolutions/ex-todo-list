@@ -7,16 +7,18 @@ const session = expressSession({
   saveUninitialized: false,
   cookie: {
     secure: process.env.SESSION_SECURE === 'true',
-    httpOnly: true
+    httpOnly: true,
+    maxAge: 1000 * 60 * 60 * 24 * 7
   }
 });
 
 const loadUser = (req, res, next) => {
   const { userId } = req.session;
-  if (!userId) {
+  if (userId) {
     User.findById(userId)
       .then(user => {
         req.user = user;
+        res.locals.currentUser = user;
         next();
       })
       .catch(error => next(error));

@@ -28,7 +28,7 @@ const userSchema = new Schema(
       match: [PW_PATTERN, 'Password needs at least 8 chars']
     }
   }
-)
+);
 
 userSchema.pre('save', function (next) {
   if (this.isModified('password')) {
@@ -38,6 +38,8 @@ userSchema.pre('save', function (next) {
         next();
       })
       .catch(error => next(error))
+  } else {
+    next();
   }
 })
 
