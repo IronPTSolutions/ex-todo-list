@@ -13,8 +13,10 @@
                 <div class="card-body">
                     <h5 class="card-title">{{task.title}}</h5>
                     <p class="card-text">{{task.description}}</p>
-                    <p class="card-text">@{{task.author}}</p>
-                    <a href="tasks/{{task.id}}" class="btn btn-primary">See detail</a>
+                    <p class="card-text">@{{task.author.name}}</p>
+                    {{#if ...currentUser.admin}}
+                        <a href="tasks/{{task.id}}" class="btn btn-primary">See detail</a>
+                    {{/if}}
                 </div>
             </div>
         </div>
