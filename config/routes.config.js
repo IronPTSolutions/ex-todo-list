@@ -16,5 +16,6 @@ router.get("/login", auth.login);
 router.post("/login", auth.doLogin);
 
 router.get("/users/:id", secure.isAuthenticated, users.detail);
+router.get("/users/:id/confirm", users.confirm);
 
 module.exports = router;

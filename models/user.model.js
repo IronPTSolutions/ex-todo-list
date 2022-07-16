@@ -15,6 +15,10 @@ const userSchema = new Schema({
     maxLength: [20, "User name max allowed chars are 20"],
     trim: true,
   },
+  confirmed: {
+    type: Boolean,
+    default: false,
+  },
   email: {
     type: String,
     required: "User email is required",

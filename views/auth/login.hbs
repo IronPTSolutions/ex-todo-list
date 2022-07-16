@@ -3,6 +3,12 @@
   <div class="col-12 col-md-6 col-lg-4">
     <h2>Login</h2>
 
+    {{#if confirm}}
+      <div class="alert alert-info">
+        Revisa tu email y blablabla
+      </div>
+    {{/if}}
+
     <form action="/login" method="post">
     
       <div class="input-group mb-1">
