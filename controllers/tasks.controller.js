@@ -2,13 +2,7 @@ const mongoose = require("mongoose");
 const { Task } = require("../models");
 
 module.exports.list = (req, res, next) => {
-  const criteria = {};
-
-  if (!req.user.admin) {
-    criteria.author = req.user.id;
-  }
-
-  Task.find(criteria)
+  Task.find()
     .populate("author")
     .then((tasks) => {
       res.render("tasks/list", { tasks });

@@ -1,3 +1,4 @@
+const Task = require("./task.model");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const Schema = mongoose.Schema;
@@ -49,6 +50,13 @@ userSchema.pre("save", function (next) {
 userSchema.methods.checkPassword = function (passwordToCheck) {
   return bcrypt.compare(passwordToCheck, this.password);
 };
+
+userSchema.virtual("tasks", {
+  ref: "Task",
+  localField: "_id", // on user model
+  foreignField: "author", // on task model
+  justOne: false,
+});
 
 const User = mongoose.model("User", userSchema);
 
