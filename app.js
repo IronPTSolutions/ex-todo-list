@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require("express");
 const logger = require("morgan");
 const createError = require("http-errors");
@@ -5,7 +7,7 @@ const createError = require("http-errors");
 // Creamos la aplicación servidor ejecutando express como una función
 const app = express();
 
-app.set("views", __dirname + "/views");
+app.set("views", `${__dirname}/views`);
 app.set("view engine", "hbs");
 app.use(logger("dev"));
 app.use(express.static(`${__dirname}/public`));

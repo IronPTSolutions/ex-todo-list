@@ -1,6 +1,8 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
+
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost/todolist';
 
 mongoose
-  .connect("mongodb://localhost/todolist")
-  .then(() => console.info("connected DB"))
-  .catch((error) => console.error("error DB", error));
+  .connect(MONGODB_URI)
+  .then(() => console.info('connected DB'))
+  .catch((error) => console.error('error DB', error));
