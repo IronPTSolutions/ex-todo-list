@@ -20,5 +20,15 @@
     {{#if errors.image }}<div class="invalid-feedback">{{ errors.image }}</div>{{/if}}
   </div>
 
+  <div class="input-group mb-1">
+    <span class="input-group-text"><i class="fa fa-globe fa-fw"></i></span>
+    <input type="text" name="address" value="{{ task.address }}" class="form-control g-places-finder {{#if errors.address }}is-invalid{{/if}}"
+      placeholder="Enter address..." />
+    {{#if errors.address }}<div class="invalid-feedback">{{ errors.address }}</div>{{/if}}
+  </div>
+
+  <input type="hidden" name="lat" value="{{ task.lat }}" />
+  <input type="hidden" name="lng" value="{{ task.lng }}" />
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

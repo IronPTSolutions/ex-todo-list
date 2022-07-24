@@ -31,6 +31,16 @@ const taskSchema = new Schema({
       message: (image) => `Invalid URL`,
     },
   },
+  address: String,
+  location: {
+    type: {
+      type: String, 
+      enum: ['Point'],
+    },
+    coordinates: {
+      type: [Number],
+    }
+  }
 });
 
 taskSchema.pre("validate", function (next) {
@@ -39,6 +49,7 @@ taskSchema.pre("validate", function (next) {
   next();
 });
 
-const Task = mongoose.model("Task", taskSchema);
+taskSchema.index({ location: '2dsphere' });
 
+const Task = mongoose.model("Task", taskSchema);
 module.exports = Task;

@@ -1,5 +1,14 @@
-<form>
-    <input type="text" class="form-control" name="author" placeholder="Search..."/>
+<form action="/tasks" method="GET">
+    <div class="input-group mb-3">
+        <span class="input-group-text"><i class="fa fa-tag"></i></span>
+        <input type="text" name="title" value="{{ query.title }}" class="form-control" placeholder="Enter task title...">
+        <span class="input-group-text"><i class="fa fa-globe"></i></span>
+        <input type="text" name="address" value="{{ query.address }}" class="form-control g-places-finder" placeholder="Enter address...">
+        <button class="btn btn-outline-secondary" type="submit"><i class="fa fa-search"></i></button>
+    </div>
+
+    <input type="hidden" name="lat" value="{{ query.lat }}" />
+    <input type="hidden" name="lng" value="{{ query.lng }}" />
 </form>
 
 <div class="row">

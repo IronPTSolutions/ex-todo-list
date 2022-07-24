@@ -2,7 +2,26 @@ const mongoose = require("mongoose");
 const { Task } = require("../models");
 
 module.exports.list = (req, res, next) => {
-  Task.find()
+  const { lat, lng, title } = req.query;
+  const criterial = {};
+  
+  if (lat && lng) {
+    criterial.location = {
+      $near: {
+        $geometry: {
+          type: "Point",
+          coordinates: [lng, lat]
+       },
+       $maxDistance: 10000
+     }
+   }
+  }
+
+  if (title) {
+   criterial.title = new RegExp(title, 'i'); 
+  }
+
+  Task.find(criterial)
     .populate("author")
     .then((tasks) => {
       res.render("tasks/list", { tasks });
@@ -25,10 +44,18 @@ module.exports.new = (req, res, next) => {
 };
 
 module.exports.create = (req, res, next) => {
+  const { lat, lng } = req.body;
   const task = {
     ...req.body,
     author: req.user.id,
   };
+
+  if (lat && lng) {
+    task.location = {
+      type: 'Point',
+      coordinates: [lng, lat]
+    }
+  }
 
   Task.create(task)
     .then((task) => res.redirect("/tasks"))

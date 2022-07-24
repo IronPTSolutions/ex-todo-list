@@ -23,6 +23,8 @@ app.use(loadUser);
 app.use((req, res, next) => {
   const path = req.path;
   res.locals.title = path;
+  res.locals.googleApiKey = process.env.GOOGLE_API_KEY;
+  res.locals.query = req.query;
   next();
 });
 
