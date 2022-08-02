@@ -1,5 +1,5 @@
 <form action="/tasks" method="GET">
-    <div class="input-group mb-3">
+    <div class="input-group">
         <span class="input-group-text"><i class="fa fa-tag"></i></span>
         <input type="text" name="title" value="{{ query.title }}" class="form-control" placeholder="Enter task title...">
         <span class="input-group-text"><i class="fa fa-globe"></i></span>
@@ -10,6 +10,13 @@
     <input type="hidden" name="lat" value="{{ query.lat }}" />
     <input type="hidden" name="lng" value="{{ query.lng }}" />
 </form>
+
+<div class="row my-3">
+    <div class="col-12">
+        {{markers tasks}}
+        <div class="g-map"></div>
+    </div>
+</div>
 
 <div class="row">
     {{#each tasks as |task|}}
@@ -23,6 +30,14 @@
                         <a href="/users/{{task.author.id}}">
                             @{{task.author.name}}
                         </a>
+                    </p>
+                    <p class="card-text">
+                        {{#hasLocation task}}
+                        <a href="http://maps.google.com/maps?q={{task.location.coordinates.[1]}},{{task.location.coordinates.[0]}}" target="_blank">Go to
+                            gmaps</a>
+                        {{else}}
+                        <p>No Tengo localización</p>
+                        {{/hasLocation}}
                     </p>
                     {{#if ...currentUser.admin}}
                         <a href="tasks/{{task.id}}" class="btn btn-primary">See detail</a>
